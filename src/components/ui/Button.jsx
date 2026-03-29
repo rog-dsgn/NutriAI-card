@@ -13,13 +13,7 @@ const Button = ({ click }) => {
       </div>
 
       {/* content */}
-      <figure>
-        <img
-          src="../../assets/salad.png"
-          alt="diet-btn"
-          className="w-10 md:w-12 aspect-square"
-        />
-      </figure>
+      <span className="text-3xl">🥗</span>
       <div className="flex flex-col flex-1 px-4">
         <span>Simule sua dieta com IA</span>
         <span className="text-[0.7rem] mt-1 text-white/70">
