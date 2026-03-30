@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react";
+import getUserId from "../../utils/UserId";
 
 // ============================================================
 // CONFIG — Personalização
@@ -16,6 +17,7 @@ const CONFIG = {
 const WHATSAPP_URL = `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(CONFIG.whatsappMsg)}`;
 
 export default function AIChatPanel({ click }) {
+  // messages: role = "user" | "assistant", content = textMessage, showCTA = boolean
   const [messages, setMessages] = useState([
     {
       role: "assistant",
@@ -23,8 +25,12 @@ export default function AIChatPanel({ click }) {
       showCTA: false,
     },
   ]);
+  // armazena texto do usuario
   const [input, setInput] = useState("");
+  // carrega mensagem, desativando temporariamente alguns recursos
   const [loading, setLoading] = useState(false);
+
+  // trabalha com o scroll automático para a última mensagem
   const bottomRef = useRef(null);
 
   useEffect(() => {
@@ -38,11 +44,18 @@ export default function AIChatPanel({ click }) {
       .replace(/\n/g, "<br/>");
   };
 
+  // trabalha com o envio da mensagem
   const send = async () => {
+    // retorna se o input estiver vazio ou se já estiver carregando uma resposta
     if (!input.trim() || loading) return;
 
+    // adiciona user role e a mensagem ao array
     const userMsg = { role: "user", content: input.trim() };
+    const userId = getUserId();
+
+    // adiciona as mensagens ultimas mensagens a um array
     const newMessages = [...messages, userMsg];
+    // * porém, ele entrega uma lista enorme de objetos (arrumar)
 
     setMessages(newMessages);
     setInput("");
@@ -54,12 +67,13 @@ export default function AIChatPanel({ click }) {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          chat_history: newMessages, // Envia o histórico para o n8n gerenciar a memória
+          user_id: userId,
           user_input: userMsg.content,
         }),
       });
 
       const data = await response.json();
+
       // O n8n deve retornar algo como { output: "texto aqui" } ou { text: "texto aqui" }
       const raw =
         data.output ||
