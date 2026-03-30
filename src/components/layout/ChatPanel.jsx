@@ -62,7 +62,7 @@ export default function AIChatPanel({ click }) {
     setLoading(true);
 
     try {
-      // Integração com n8n
+      // envia a mensagem do usuário para o n8n e aguarda a resposta
       const response = await fetch(CONFIG.n8nWebhookUrl, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -76,17 +76,9 @@ export default function AIChatPanel({ click }) {
 
       // O n8n deve retornar algo como { output: "texto aqui" } ou { text: "texto aqui" }
       const raw =
-        data.output ||
-        data.text ||
-        "Desculpe, tive um problema ao processar sua resposta.";
+        data.text || "Desculpe, tive um problema ao processar sua resposta.";
 
-      const showCTA = raw.includes("[CTA_WHATSAPP]");
-      const clean = raw.replace("[CTA_WHATSAPP]", "");
-
-      setMessages((prev) => [
-        ...prev,
-        { role: "assistant", content: clean, showCTA },
-      ]);
+      setMessages((prev) => [...prev, { role: "assistant", content: raw }]);
     } catch (error) {
       console.error("Erro ao conectar com n8n:", error);
       setMessages((prev) => [
