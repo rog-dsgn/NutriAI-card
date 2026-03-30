@@ -11,7 +11,7 @@ const CONFIG = {
   whatsappMsg:
     "Olá, Dra. Marina! Acabei de simular minha dieta com a IA e quero saber mais sobre a consulta 🥗",
   // URL DO SEU WEBHOOK N8N
-  n8nWebhookUrl: "https://n8n-n8n.hnv2gs.easypanel.host/webhook-test/smart",
+  n8nWebhookUrl: "https://n8n-n8n.hnv2gs.easypanel.host/webhook/smart",
 };
 
 const WHATSAPP_URL = `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(CONFIG.whatsappMsg)}`;
