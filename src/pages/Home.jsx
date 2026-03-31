@@ -1,5 +1,5 @@
 // hooks
-import React from "react";
+import React, { useCallback } from "react";
 import { useState } from "react";
 
 //pages & Ui
@@ -38,35 +38,42 @@ const SOCIAL_LINKS = [
 const Home = () => {
   const [chat, setChat] = useState(false);
 
-  const handleClick = () => setChat((prev) => !prev);
+  const handleClick = useCallback(() => {
+    setChat((prev) => !prev);
+  }, []);
 
   return (
-    <section className="relative w-screen max-w-xl flex flex-col items-center bg-white h-screen">
+    <main className="relative mx-auto w-screen max-w-xl flex flex-col items-center bg-white min-h-screen">
       {/* Header (pfp, banner, infos..) */}
       <Header />
+
       <div className="w-full px-4 md:px-16">
-        {/* Chat Trigger */}
-        <Button click={handleClick} />
+        <Button click={handleClick} aria-expanded={chat} />
         {/* ------------ */}
 
         {/* hr */}
-        <div className="flex flex-row justify-center items-center gap-4 my-4 text-[0.7rem] text-[#9f9f9f]">
-          <div className="h-0.5 border-b border-[#e0e0e0] flex flex-1" />
+        <div className="flex flex-row justify-center items-center gap-4 my-4 text-[0.7rem] tracking-wider text-[#9f9f9f]">
+          <span className="h-px bg-gray-200 flex flex-1" />
           ou acesse
-          <div className="h-0.5 border-b border-[#e0e0e0] flex flex-1" />
+          <span className="h-px bg-gray-200 flex flex-1" />
         </div>
         {/* ------------ */}
 
         {/* Links */}
-        {SOCIAL_LINKS.map((item, index) => (
-          <ButtonLink key={index} {...item} />
-        ))}
+        <nav className="w-full">
+          {SOCIAL_LINKS.map((item, index) => (
+            <ButtonLink key={index} {...item} />
+          ))}
+        </nav>
       </div>
-      <footer className="my-4 text-xs text-slate-500">@rog-dsgn 2026.</footer>
+
+      <footer className="mt-auto py-4 text-xs text-slate-400">
+        Roger Farias. {new Date().getFullYear()}.
+      </footer>
 
       {/* Chat UI */}
       {chat && <AIChatPanel click={handleClick} />}
-    </section>
+    </main>
   );
 };
 
