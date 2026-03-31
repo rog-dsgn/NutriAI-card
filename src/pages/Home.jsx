@@ -8,19 +8,40 @@ import AIChatPanel from "../components/layout/ChatPanel";
 import Button from "../components/ui/Button";
 import ButtonLink from "../components/ui/ButtonLink";
 
+const SOCIAL_LINKS = [
+  {
+    link: "...",
+    icon: "📅",
+    title: "Agendar Consulta",
+    desc: "Presencial ou Online",
+  },
+  {
+    link: "...",
+    icon: "📸",
+    title: "Instagram",
+    desc: "@dra.marinasouza",
+  },
+  {
+    link: "...",
+    icon: "▶️",
+    title: "Canal do Youtube",
+    desc: "Receitas & Dicas Semanais",
+  },
+  {
+    link: "...",
+    icon: "📖",
+    title: "E-book Gratuito",
+    desc: "Guia de Alimentação Inteligente",
+  },
+];
+
 const Home = () => {
   const [chat, setChat] = useState(false);
 
-  const handleClick = () => {
-    if (!chat) {
-      setChat(true);
-    } else {
-      setChat(false);
-    }
-  };
+  const handleClick = () => setChat((prev) => !prev);
 
   return (
-    <section className="relative w-screen md:w-xl flex flex-col items-center bg-white h-screen">
+    <section className="relative w-screen max-w-xl flex flex-col items-center bg-white h-screen">
       {/* Header (pfp, banner, infos..) */}
       <Header />
       <div className="w-full px-4 md:px-16">
@@ -37,30 +58,9 @@ const Home = () => {
         {/* ------------ */}
 
         {/* Links */}
-        <ButtonLink
-          link={"google.com"}
-          icon={"📅"}
-          title={"Agendar Consulta"}
-          desc={"Presencial ou online"}
-        />
-        <ButtonLink
-          link={"google.com"}
-          icon={"📸"}
-          title={"Instagram"}
-          desc={"@dra.marinasouza"}
-        />
-        <ButtonLink
-          link={"google.com"}
-          icon={"▶️"}
-          title={"Canal do Youtube"}
-          desc={"Receitas & Dicas Semanais"}
-        />
-        <ButtonLink
-          link={"google.com"}
-          icon={"📖"}
-          title={"E-book Gratuito"}
-          desc={"Guia de Alimentação Inteligente"}
-        />
+        {SOCIAL_LINKS.map((item, index) => (
+          <ButtonLink key={index} {...item} />
+        ))}
       </div>
       <footer className="my-4 text-xs text-slate-500">@rog-dsgn 2026.</footer>
 
