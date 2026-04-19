@@ -7,11 +7,10 @@ import getUserId from "../../utils/UserId";
 const CONFIG = {
   name: "Dra. Marina Souza",
   agentName: "Nutri IA",
-  whatsapp: "5511999999999",
-  whatsappMsg:
-    "Olá, Dra. Marina! Acabei de simular minha dieta com a IA e quero saber mais sobre a consulta 🥗",
+  whatsapp: "5566996817776",
+  whatsappMsg: "Olá @RgF (Não apague essa mensagem)",
   // URL DO SEU WEBHOOK N8N
-  n8nWebhookUrl: "https://nutriai1.app.n8n.cloud/webhook/smart-chat",
+  n8nWebhookUrl: "https://nutriai2.app.n8n.cloud/webhook/smart-chat",
 };
 
 const WHATSAPP_URL = `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(CONFIG.whatsappMsg)}`;
