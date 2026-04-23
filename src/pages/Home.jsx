@@ -37,14 +37,10 @@ const SOCIAL_LINKS = [
 
 const Home = () => {
   const [chat, setChat] = useState(false);
-  const [count, setCount] = useState(0);
 
   const handleClick = useCallback(() => {
     setChat((prev) => !prev);
-    setCount(count + 1);
-
-    console.log(count);
-  }, [count]);
+  }, []);
 
   return (
     <main className="relative mx-auto w-screen max-w-xl flex flex-col items-center bg-white min-h-screen">

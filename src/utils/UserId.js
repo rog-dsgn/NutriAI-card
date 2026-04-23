@@ -1,14 +1,8 @@
-import { v4 as uuidv4 } from "uuid";
+export default function getUserId() {
+  const stored = localStorage.getItem("nutri_user_id");
+  if (stored) return stored;
 
-const getUserId = () => {
-  let id = localStorage.getItem("smartcard_user_id");
-
-  if (!id) {
-    id = uuidv4();
-    localStorage.setItem("smartcard_user_id", id);
-  }
-
+  const id = Math.random().toString(36).slice(2, 7).toUpperCase(); // ex: "K4RBZ"
+  localStorage.setItem("nutri_user_id", id);
   return id;
-};
-
-export default getUserId;
+}
