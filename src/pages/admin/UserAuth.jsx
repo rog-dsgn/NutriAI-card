@@ -1,14 +1,19 @@
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../lib/firebase";
 import { useState } from "react";
+import { useAuth } from "../../contexts/AuthContext";
 
 const UserAuth = () => {
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
 
+  const { user, loading } = useAuth;
+
+  if (loading) return <span>Carregando...</span>;
+  if (user) return <span>Usuario ja autenticado!</span>;
+
   const onSubmit = () => {
     signInWithEmailAndPassword(auth, email, pass);
-    console.log(email);
   };
 
   return (
