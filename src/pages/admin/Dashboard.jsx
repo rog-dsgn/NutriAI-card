@@ -1,19 +1,14 @@
-import { signOut } from "firebase/auth";
 import { auth } from "../../lib/firebase";
+import { signOut } from "firebase/auth";
+import { getVisits } from "../../utils/analytics";
 import { useEffect, useState } from "react";
 
-const HOOK = {
-  n8nWebhookUrl: "https://nutriai2.app.n8n.cloud/webhook/metrics",
-};
-
 const Dashboard = () => {
-  const [metrics, setMetrics] = useState(null);
+  const [visits, setVisits] = useState(0);
   const logout = () => signOut(auth);
 
   useEffect(() => {
-    fetch(HOOK.n8nWebhookUrl)
-      .then((res) => res.json())
-      .then((data) => setMetrics(data));
+    getVisits().then((data) => setVisits(data.visits));
   }, []);
 
   return (
@@ -27,7 +22,8 @@ const Dashboard = () => {
         <button onClick={logout}>Logout</button>
       </div>
 
-      <div>{metrics?.contador}</div>
+      <hr />
+      <span>{visits}</span>
     </section>
   );
 };

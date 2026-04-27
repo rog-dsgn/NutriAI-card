@@ -1,13 +1,15 @@
 // hooks
-import React, { useCallback, useEffect } from "react";
-import useVisit from "../hook/useVisit";
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
+
+// utils
+import { trackVisit } from "../utils/analytics";
 
 //pages & Ui
 import Header from "../components/layout/Header";
 import AIChatPanel from "../components/layout/ChatPanel";
 import Button from "../components/ui/Button";
 import ButtonLink from "../components/ui/ButtonLink";
+import getUserId from "../utils/UserId";
 
 const SOCIAL_LINKS = [
   {
@@ -42,20 +44,15 @@ const VIEW_HOOK = {
 
 const Home = () => {
   const [chat, setChat] = useState(false);
-  const [viewCount, setViewCount] = useState();
 
   const handleClick = useCallback(() => {
     setChat((prev) => !prev);
   }, []);
 
   useEffect(() => {
-    fetch(VIEW_HOOK.n8nWebHook)
-      .then((res) => res.json())
-      .then((data) => setViewCount(data));
+    const userId = getUserId();
+    trackVisit(userId);
   }, []);
-
-  useVisit();
-  viewCount;
 
   return (
     <main className="relative mx-auto w-screen max-w-xl flex flex-col items-center bg-white min-h-screen">
@@ -76,8 +73,8 @@ const Home = () => {
 
         {/* Links */}
         <nav className="w-full">
-          {SOCIAL_LINKS.map((item, index) => (
-            <ButtonLink key={index} {...item} />
+          {SOCIAL_LINKS.map((item) => (
+            <ButtonLink key={item.title} {...item} />
           ))}
         </nav>
       </div>
