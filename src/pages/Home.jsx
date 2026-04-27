@@ -1,5 +1,6 @@
 // hooks
-import React, { useCallback } from "react";
+import React, { useCallback, useEffect } from "react";
+import useVisit from "../hook/useVisit";
 import { useState } from "react";
 
 //pages & Ui
@@ -35,12 +36,26 @@ const SOCIAL_LINKS = [
   },
 ];
 
+const VIEW_HOOK = {
+  n8nWebHook: "https://nutriai2.app.n8n.cloud/webhook/views",
+};
+
 const Home = () => {
   const [chat, setChat] = useState(false);
+  const [viewCount, setViewCount] = useState();
 
   const handleClick = useCallback(() => {
     setChat((prev) => !prev);
   }, []);
+
+  useEffect(() => {
+    fetch(VIEW_HOOK.n8nWebHook)
+      .then((res) => res.json())
+      .then((data) => setViewCount(data));
+  }, []);
+
+  useVisit();
+  viewCount;
 
   return (
     <main className="relative mx-auto w-screen max-w-xl flex flex-col items-center bg-white min-h-screen">
