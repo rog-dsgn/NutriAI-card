@@ -10,7 +10,6 @@ import { Menu, Search, Sparkles } from "@boxicons/react";
 // layouts & uis
 import Card from "../../components/ui/Card";
 import { ChatCard, LeadCard } from "../../components/layout/LeadsCard";
-// import { LeadCard } from "../../components/layout/LeadsCard";
 
 // component
 const Dashboard = () => {

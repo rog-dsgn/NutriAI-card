@@ -5,7 +5,7 @@ const CONFIG = {
   name: "Dra. Marina Souza",
   agentName: "Nutri IA",
   whatsapp: "5566996204981",
-  n8nWebhookUrl: import.meta.env.VITE_N8N_CHAT,
+  n8nWebhookUrl: import.meta.env.VITE_N8N_HOOK,
 };
 
 const userId = getUserId();
@@ -139,7 +139,7 @@ export default function AIChatPanel({ click }) {
     setLoading(true);
 
     try {
-      const response = await fetch(CONFIG.n8nWebhookUrl, {
+      const response = await fetch(`${CONFIG.n8nWebhookUrl}/smart-chat`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

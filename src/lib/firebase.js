@@ -2,8 +2,8 @@ import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: import.meta.env.VITE_FB_APIKEY,
-  authDomain: import.meta.env.VITE_FB_AUTH,
+  apiKey: import.meta.env.VITE_FB_CALL,
+  authDomain: import.meta.env.VITE_FB_AUTH_DOMAIN,
   databaseURL: import.meta.env.VITE_FB_DATABASE,
   projectId: import.meta.env.VITE_FB_PROJECT,
   storageBucket: import.meta.env.VITE_FB_STORAGE,

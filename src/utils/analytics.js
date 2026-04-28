@@ -1,6 +1,6 @@
 import { getLocalDate } from "./dateNow";
 
-const BASE_URL = import.meta.env.VITE_N8N_VISITS;
+const BASE_URL = import.meta.env.VITE_N8N_HOOK;
 
 // verifica se o usuario ja acessou sistema alguma vez; escreve o id do usuario se já;
 export const trackVisit = (userId) => {
