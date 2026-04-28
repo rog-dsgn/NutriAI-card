@@ -38,10 +38,6 @@ const SOCIAL_LINKS = [
   },
 ];
 
-const VIEW_HOOK = {
-  n8nWebHook: "https://nutriai2.app.n8n.cloud/webhook/views",
-};
-
 const Home = () => {
   const [chat, setChat] = useState(false);
 
@@ -55,7 +51,7 @@ const Home = () => {
   }, []);
 
   return (
-    <main className="relative mx-auto w-screen max-w-xl flex flex-col items-center bg-white min-h-screen">
+    <main className="relative mx-auto w-screen max-w-xl shadow-md flex flex-col items-center bg-white min-h-screen">
       {/* Header (pfp, banner, infos..) */}
       <Header />
 

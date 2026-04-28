@@ -9,7 +9,7 @@ import PrivateRoute from "./contexts/PrivateRoute";
 
 const App = () => {
   return (
-    <>
+    <div className="flex flex-center justify-center w-screen bg-gray-100">
       <AuthProvider>
         <BrowserRouter>
           <Routes>
@@ -26,7 +26,7 @@ const App = () => {
           </Routes>
         </BrowserRouter>
       </AuthProvider>
-    </>
+    </div>
   );
 };
 

@@ -5,8 +5,7 @@ const CONFIG = {
   name: "Dra. Marina Souza",
   agentName: "Nutri IA",
   whatsapp: "5566996204981",
-  whatsappMsg: "Olá @RgF (Não apague essa mensagem)",
-  n8nWebhookUrl: "https://nutriai2.app.n8n.cloud/webhook/smart-chat",
+  n8nWebhookUrl: import.meta.env.VITE_N8N_CHAT,
 };
 
 const userId = getUserId();
