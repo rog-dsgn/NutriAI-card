@@ -1,5 +1,5 @@
 // hooks & libs
-import { auth } from "../../lib/firebase";
+// import { auth } from "../../lib/firebase";
 // import { signOut } from "firebase/auth";
 import { getVisits, getLeads } from "../../utils/analytics";
 import { useEffect, useState } from "react";
@@ -38,7 +38,6 @@ const Dashboard = () => {
 
   return (
     <section className="bg-gray-100 h-full max-w-xl w-screen shadow-md">
-      <button onClick={logout}>Logout</button>
       {/* header */}
       <header className="flex flex-row py-6 px-6 gap-3 justify-center items-center">
         <div className="text-[#212121]">
