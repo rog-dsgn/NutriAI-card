@@ -37,22 +37,19 @@ const Dashboard = () => {
   }, []);
 
   return (
-    <section className="bg-gray-100 h-full max-w-xl w-screen shadow-md">
+    <section className="bg-gray-100 h-full max-w-xl w-screen shadow-md px-4">
       {/* header */}
-      <header className="flex flex-row py-6 px-6 gap-3 justify-center items-center">
-        <div className="text-[#212121]">
-          <Menu />
-        </div>
-        <div className="flex flex-col flex-1">
-          <p className="text-xs text-[#9f9f9f]">AI Content Studio</p>
-          <h2 className="font-bold text-[#212121]">Olá, Dra. Marina</h2>
-        </div>
+      <header className="flex flex-row py-8 px-6 gap-6 justify-center items-center">
         <div className="overflow-hidden w-10 aspect-square">
           <img
             src="/avatar.png"
             alt="icon"
             className="h-full w-full rounded-full object-cover"
           />
+        </div>
+        <div className="flex flex-col flex-1">
+          <p className="text-xs text-[#9f9f9f]">AI Content Studio</p>
+          <h2 className="font-bold text-[#212121]">Olá, Dra. Marina</h2>
         </div>
       </header>
 
