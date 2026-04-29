@@ -1,6 +1,6 @@
 // hooks & libs
 import { auth } from "../../lib/firebase";
-import { signOut } from "firebase/auth";
+// import { signOut } from "firebase/auth";
 import { getVisits, getLeads } from "../../utils/analytics";
 import { useEffect, useState } from "react";
 
@@ -22,7 +22,7 @@ const Dashboard = () => {
   const [historyChat, setHistoryChat] = useState([]);
 
   // chama o logout do firebase
-  const logout = () => signOut(auth);
+  // const logout = () => signOut(auth);
 
   useEffect(() => {
     getVisits().then((data) => {
