@@ -16,7 +16,7 @@ export const ChatCard = ({ lead }) => {
       >
         {lead.nivel_intencao}
       </span>
-      <p className="text-sm font-medium text-[#212121]">{lead.objetivo}</p>
+      <p className="text-sm font-medium text-[#212121]">{lead.resumo}</p>
       <div className="flex flex-row justify-between items-end">
         <div className="flex flex-col">
           <span className="text-xs text-gray-500">usuário:</span>
