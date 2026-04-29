@@ -14,7 +14,8 @@ import { ChatCard, LeadCard } from "../../components/layout/LeadsCard";
 // component
 const Dashboard = () => {
   // analytics vars
-  const [visits, setVisits] = useState(0);
+  const [visitsToday, setVisitsToday] = useState(0);
+  const [visitsTotal, setVisitsTotal] = useState(0);
   const [chatToday, setChatToday] = useState(0);
   const [leadsToday, setLeadsToday] = useState(0);
 
@@ -26,9 +27,10 @@ const Dashboard = () => {
 
   useEffect(() => {
     getVisits().then((data) => {
-      setVisits(data.visits ?? 0);
+      setVisitsToday(data.pageviews ?? 0);
       setChatToday(data.chats ?? 0);
       setLeadsToday(data.leads ?? 0);
+      setVisitsTotal(data.visits ?? 0);
     });
     getLeads().then((data) => {
       const list = Array.isArray(data) ? data : [];
@@ -55,8 +57,8 @@ const Dashboard = () => {
 
       <h3 className="px-3 py-2 text-lg font-medium">Atividade</h3>
       <div className="grid grid-cols-2 gap-3 px-3">
-        <Card value={visits} detail={"Visitantes Hoje"} />
-        <Card value={visits} detail={"Total de Visitantes"} />
+        <Card value={visitsToday} detail={"Visitantes Hoje"} />
+        <Card value={visitsTotal} detail={"Total de Visitantes"} />
         <Card value={chatToday} detail={"Conversas Iniciadas"} />
         <Card value={leadsToday} detail={"Leads Gerados"} />
       </div>

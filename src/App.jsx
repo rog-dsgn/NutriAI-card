@@ -4,7 +4,7 @@ import { AuthProvider } from "./contexts/AuthProvider";
 // pages
 import Home from "./pages/Home";
 import UserAuth from "./pages/admin/UserAuth";
-import Dashboard from "./pages/admin/Dashboard";
+import Dashboard from "./pages/admin/AnalyticsBoard";
 import PrivateRoute from "./contexts/PrivateRoute";
 
 const App = () => {
