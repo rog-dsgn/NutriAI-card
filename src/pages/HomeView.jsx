@@ -1,50 +1,22 @@
 // hooks
-import { useCallback, useEffect, useState } from "react";
+import { useEffect } from "react";
 
-// utils
-import { trackVisit } from "../utils/analytics";
-
-//pages & Ui
-import Header from "../components/layout/Header";
-import AIChatPanel from "../components/layout/ChatPanel";
-import Button from "../components/ui/Button";
-import ButtonLink from "../components/ui/ButtonLink";
+// utils & configs
 import getUserId from "../utils/UserId";
+import { trackVisit } from "../utils/analytics";
+import { links } from "../config/visitLinks";
 
-const SOCIAL_LINKS = [
-  {
-    link: "...",
-    icon: "📅",
-    title: "Agendar Consulta",
-    desc: "Presencial ou Online",
-  },
-  {
-    link: "...",
-    icon: "📸",
-    title: "Instagram",
-    desc: "@dra.marinasouza",
-  },
-  {
-    link: "...",
-    icon: "▶️",
-    title: "Canal do Youtube",
-    desc: "Receitas & Dicas Semanais",
-  },
-  {
-    link: "...",
-    icon: "📖",
-    title: "E-book Gratuito",
-    desc: "Guia de Alimentação Inteligente",
-  },
-];
+// pages
+import AIChatPanel from "./ChatView";
+
+// layout & Ui
+import Header from "../components/layout/Header";
+import ChatTrigger from "../components/ui/ChatTrigger";
+import ButtonLink from "../components/ui/ButtonLink";
+
+const SOCIAL_LINKS = links;
 
 const Home = () => {
-  const [chat, setChat] = useState(false);
-
-  const handleClick = useCallback(() => {
-    setChat((prev) => !prev);
-  }, []);
-
   useEffect(() => {
     const userId = getUserId();
     trackVisit(userId);
@@ -52,11 +24,9 @@ const Home = () => {
 
   return (
     <main className="relative mx-auto w-screen max-w-xl shadow-md flex flex-col items-center bg-white min-h-screen">
-      {/* Header (pfp, banner, infos..) */}
-      <Header />
-
+      <Header /> {/* Header (pfp, banner, infos..) */}
       <div className="w-full px-4 md:px-16">
-        <Button click={handleClick} aria-expanded={chat} />
+        <ChatTrigger />
         {/* ------------ */}
 
         {/* hr */}
@@ -74,13 +44,9 @@ const Home = () => {
           ))}
         </nav>
       </div>
-
       <footer className="mt-auto py-4 text-xs text-slate-400">
-        Roger Farias. {new Date().getFullYear()}.
+        Powered by NutriAI Card · 2026
       </footer>
-
-      {/* Chat UI */}
-      {chat && <AIChatPanel click={handleClick} />}
     </main>
   );
 };

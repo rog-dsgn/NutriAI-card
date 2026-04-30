@@ -1,10 +1,17 @@
 import React from "react";
 import { ArrowRightStroke } from "@boxicons/react";
+import { useNavigate } from "react-router-dom";
 
-const Button = ({ click }) => {
+const ChatTrigger = () => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate("/chat");
+  };
+
   return (
     <button
-      onClick={click}
+      onClick={handleClick}
       className="relative flex flex-row rounded-xl py-3 px-3 gap-2 items-center shadow-md bg-linear-to-br from-emerald-600 to-green-500 text-white w-full text-left cursor-pointer hover:bg-linear-to-bl active:bg-linear-to-r hover:scale-105 active:scale-95 transition-all duration-300"
     >
       {/* btn badge */}
@@ -27,4 +34,4 @@ const Button = ({ click }) => {
   );
 };
 
-export default Button;
+export default ChatTrigger;

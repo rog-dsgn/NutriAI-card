@@ -1,6 +1,4 @@
 // hooks & libs
-// import { auth } from "../../lib/firebase";
-// import { signOut } from "firebase/auth";
 import { getVisits, getLeads } from "../../utils/analytics";
 import { useEffect, useState } from "react";
 
