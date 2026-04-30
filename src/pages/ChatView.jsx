@@ -175,7 +175,7 @@ export default function AIChatPage() {
         .animate-fade-in { animation: fade-in 0.25s ease forwards; }
       `}</style>
 
-      <div className="flex flex-col h-screen bg-stone-50 max-w-lg mx-auto relative">
+      <div className="flex flex-col h-dvh bg-stone-50 max-w-lg mx-auto relative">
         {/* ── Header ── */}
         <header className="shrink-0 bg-white border-b border-stone-100 shadow-sm">
           <div className="flex items-center gap-3 px-4 py-3">
