@@ -14,11 +14,6 @@ export const trackVisit = (userId) => {
   }).catch(console.error);
 };
 
-export const getVisits = () => {
-  return fetch(`${BASE_URL}/visits`).then((res) => res.json());
-};
-
-// getLeads
-export const getLeads = () => {
-  return fetch(`${BASE_URL}/leads`).then((res) => res.json());
+export const getAnalytics = () => {
+  return fetch(`${BASE_URL}/analytics`).then((res) => res.json());
 };
