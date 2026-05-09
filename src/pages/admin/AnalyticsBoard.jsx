@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
 import { getAnalytics } from "../../utils/analytics";
 import { LeadCard } from "../../components/layout/LeadsCard";
+import { TrendingUp } from "@boxicons/react";
+import ChartLine from "../../components/ui/ChartLine";
 
 // ── StatCard ──────────────────────────────────────────────────────────────────
-const StatCard = ({ value, label, sub, accentClass = "bg-gray-100" }) => (
-  <div className="relative bg-white rounded-2xl p-5 border border-gray-100 shadow-sm overflow-hidden">
-    <div
-      className={`absolute top-0 right-0 w-14 h-14 ${accentClass} rounded-bl-full opacity-40`}
-    />
+const StatCard = ({ value, label, sub }) => (
+  <div className="relative bg-white rounded-2xl border border-gray-300 shadow-sm overflow-hidden place-content-center">
+    <ChartLine />
     <span className="block text-3xl font-bold text-gray-900 leading-none">
       {value}
     </span>
@@ -15,7 +15,8 @@ const StatCard = ({ value, label, sub, accentClass = "bg-gray-100" }) => (
       {label}
     </span>
     {sub && (
-      <span className="block text-xs font-semibold text-emerald-600 mt-1">
+      <span className="flex items-center gap-0.5 text-xs font-semibold text-emerald-600 mt-1">
+        <TrendingUp />
         {sub}
       </span>
     )}
@@ -68,7 +69,7 @@ export default function Dashboard() {
 
   return (
     <section
-      className={`bg-gray-50 min-h-screen flex justify-center transition-opacity duration-500 ${loaded ? "opacity-100" : "opacity-0"}`}
+      className={`bg-gray-50 w-screen max-w-xl min-h-screen flex justify-center transition-opacity duration-500 ${loaded ? "opacity-100" : "opacity-0"}`}
     >
       <div className="w-full max-w-xl px-4 pb-12">
         {/* header */}
@@ -86,7 +87,7 @@ export default function Dashboard() {
           </div>
           <div>
             <p className="text-[11px] text-gray-400 font-medium tracking-wide">
-              NutriAI Card
+              AI Content Studio
             </p>
             <h2 className="text-base font-bold text-gray-900">
               Olá, Dra. Marina 👋
@@ -132,7 +133,10 @@ export default function Dashboard() {
           {leads.length === 0 ? (
             <EmptyLeads />
           ) : (
-            leads.map((l) => <LeadCard key={l.id} lead={l} />)
+            leads
+              .slice()
+              .reverse()
+              .map((l) => <LeadCard key={l.id} lead={l} />)
           )}
         </div>
       </div>
