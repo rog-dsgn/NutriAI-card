@@ -10,9 +10,9 @@ import { links } from "../config/visitLinks";
 import AIChatPanel from "./ChatView";
 
 // layout & Ui
-import Header from "../components/layout/Header";
-import ChatTrigger from "../components/ui/ChatTrigger";
-import ButtonLink from "../components/ui/ButtonLink";
+import Header from "../components/homeview/Header";
+import ChatTrigger from "../components/homeview/ChatTrigger";
+import ButtonLink from "../components/homeview/ButtonLink";
 
 const SOCIAL_LINKS = links;
 

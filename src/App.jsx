@@ -4,14 +4,13 @@ import { AuthProvider } from "./contexts/AuthProvider";
 // pages
 import Home from "./pages/HomeView";
 import UserAuth from "./pages/admin/UserAuth";
-// import Dashboard from "./pages/admin/AnalyticsBoard";
 import PrivateRoute from "./contexts/PrivateRoute";
 import AIChatPage from "./pages/ChatView";
-import DashboardView from "./pages/admin/DashboardView";
+import AdminView from "./pages/admin/AdminView";
 
 const App = () => {
   return (
-    <div className="flex flex-center justify-center w-screen h-screen bg-gray-100">
+    <div className="flex flex-center justify-center w-screen h-screen bg-gray-200">
       <AuthProvider>
         <BrowserRouter>
           <Routes>
@@ -22,7 +21,7 @@ const App = () => {
               path="/dashboard"
               element={
                 <PrivateRoute>
-                  <DashboardView />
+                  <AdminView />
                 </PrivateRoute>
               }
             />

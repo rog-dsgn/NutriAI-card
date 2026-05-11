@@ -1,13 +1,11 @@
 import { useState, useEffect } from "react";
 import { getAnalytics } from "../../utils/analytics";
-import { LeadCard } from "../../components/layout/LeadsCard";
+import { LeadCard } from "../../components/dashboard/LeadsCard";
 import { TrendingUp } from "@boxicons/react";
-import ChartLine from "../../components/ui/ChartLine";
 
 // ── StatCard ──────────────────────────────────────────────────────────────────
 const StatCard = ({ value, label, sub }) => (
   <div className="relative bg-white rounded-2xl border border-gray-300 shadow-sm overflow-hidden place-content-center">
-    <ChartLine />
     <span className="block text-3xl font-bold text-gray-900 leading-none">
       {value}
     </span>

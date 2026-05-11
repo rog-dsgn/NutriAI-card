@@ -30,7 +30,7 @@ const formatText = (text) =>
 function TypingIndicator() {
   return (
     <div className="flex items-start gap-3">
-      <div className="w-7 h-7 rounded-full bg-emerald-100 flex items-center justify-center text-sm shrink-0 mt-1">
+      <div className="w-7 h-7 rounded-full bg-emerald-300 flex items-center justify-center text-sm shrink-0 mt-1">
         🥗
       </div>
       <div className="bg-white border border-stone-100 shadow-sm px-4 py-3 rounded-2xl rounded-tl-none">
