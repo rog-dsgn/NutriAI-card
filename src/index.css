@@ -6,3 +6,25 @@
   font-weight: 400;
   font-style: normal;
 }
+
+.raleway-bold {
+  font-family: "Raleway", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: bold;
+}
+
+@keyframes typewriter {
+  from {
+    transform: scaleX(0%);
+  }
+  to {
+    transform: scaleX(100%);
+  }
+}
+
+.typewriter {
+  overflow: hidden;
+  white-space: nowrap;
+  animation: typewriter 0.1s steps(10) ease-in-out;
+}
