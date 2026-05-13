@@ -10,7 +10,7 @@ import AdminView from "./pages/admin/AdminView";
 
 const App = () => {
   return (
-    <div className="flex flex-center justify-center w-screen h-screen bg-gray-200">
+    <div className="flex flex-center justify-center w-screen h-full bg-linear-to-br from-emerald-400 to-emerald-300">
       <AuthProvider>
         <BrowserRouter>
           <Routes>

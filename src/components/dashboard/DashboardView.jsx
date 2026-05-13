@@ -4,7 +4,7 @@ import LeadStats from "./LeadStats";
 const DashboardView = () => {
   return (
     <section className="relative raleway w-full h-screen bg-linear-to-t from-gray-200 to-white text-[#212121]">
-      <header className="pt-8 pb-4">
+      <header className="pt-3 pb-6">
         <ProfileCard />
       </header>
 

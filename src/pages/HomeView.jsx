@@ -23,7 +23,7 @@ const Home = () => {
   }, []);
 
   return (
-    <main className="relative mx-auto w-screen max-w-xl shadow-md flex flex-col items-center bg-white min-h-screen">
+    <main className="relative mx-auto w-screen max-w-xl shadow-2xl h-fit flex flex-col items-center bg-white">
       <Header /> {/* Header (pfp, banner, infos..) */}
       <div className="w-full px-4 md:px-16">
         <ChatTrigger />
