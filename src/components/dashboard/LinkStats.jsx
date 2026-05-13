@@ -1,14 +1,14 @@
 import React from "react";
 import { links } from "../../config/visitLinks";
-import { FingerTouch } from "@boxicons/react";
+import { CursorClick } from "@boxicons/react";
 
 const LinkStats = () => {
   return (
-    <div>
-      <p className="px-2 my-1 ml-4 text-xs raleway-bold text-[#212121]/70">
+    <>
+      <p className="px-2 my-1 ml-4 text-xs montserrat text-[#212121]/70">
         Links
       </p>
-      <div className="grid grid-cols-2 gap-0.5 mx-4">
+      <div className="grid grid-cols-2 gap-1 mx-4">
         {links.map((item, index) => (
           <div
             key={index}
@@ -21,14 +21,14 @@ const LinkStats = () => {
                 {/* <span className="opacity-50">{item.desc}</span> */}
               </div>
               <div className="flex montserrat text-sm gap-1">
-                <FingerTouch color="#9f9f9f" size="sm" />
+                <CursorClick color="#9f9f9f" size="sm" />
                 <span>34 clicks</span>
               </div>
             </div>
           </div>
         ))}
       </div>
-    </div>
+    </>
   );
 };
 

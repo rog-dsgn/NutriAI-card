@@ -25,11 +25,11 @@ const LeadStats = ({ stats }) => {
   ];
 
   return (
-    <div className="bg-gray-50 border border-gray-200 mx-4 rounded-3xl px-4 py-4">
-      <p className="my-1 text-xs raleway-bold text-[#212121]/70">
+    <>
+      <p className="px-2 my-1 ml-4 text-xs montserrat text-[#212121]/70">
         Atividade de Conteúdo
       </p>
-      <div className="grid grid-cols-2 gap-2">
+      <div className="grid grid-cols-2 gap-2 mx-4">
         {cards.map((item, index) => (
           <div
             key={item.name}
@@ -54,7 +54,7 @@ const LeadStats = ({ stats }) => {
           </div>
         ))}
       </div>
-    </div>
+    </>
   );
 };
 
