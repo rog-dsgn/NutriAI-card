@@ -33,7 +33,7 @@ const AdminView = () => {
   }, []);
 
   return (
-    <main className="relative w-full h-dvh text-[#212121]">
+    <main className="relative w-full h-dvh bg-linear-to-t from-gray-200 to-white text-[#212121]">
       {/* renderiza as views */}
       {activeTab === "dashboard" && <DashboardView stats={stats} />}
       {activeTab === "leads" && <LeadsView />}

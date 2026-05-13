@@ -5,7 +5,7 @@ import LinkStats from "./LinkStats";
 
 const DashboardView = ({ stats }) => {
   return (
-    <section className="raleway w-full h-full overflow-y-auto pb-20 bg-linear-to-t from-gray-200 to-white text-[#212121]">
+    <section className="raleway w-full h-full overflow-y-auto pb-20 text-[#212121]">
       <header className="pt-3 pb-6">
         <ProfileCard />
       </header>
