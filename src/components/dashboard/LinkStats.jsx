@@ -5,8 +5,10 @@ import { FingerTouch } from "@boxicons/react";
 const LinkStats = () => {
   return (
     <div>
-      <p className="px-2 my-1 text-xs raleway-bold text-[#212121]/70">Links</p>
-      <div className="flex flex-row gap-0.5 overflow-x-auto">
+      <p className="px-2 my-1 ml-4 text-xs raleway-bold text-[#212121]/70">
+        Links
+      </p>
+      <div className="grid grid-cols-2 gap-0.5 mx-4">
         {links.map((item, index) => (
           <div
             key={index}

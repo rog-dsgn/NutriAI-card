@@ -10,7 +10,7 @@ const DashboardView = ({ stats }) => {
         <ProfileCard />
       </header>
 
-      <div className="flex flex-col gap-2 px-4">
+      <div className="flex flex-col gap-2">
         <LeadStats stats={stats} />
         <LinkStats />
       </div>

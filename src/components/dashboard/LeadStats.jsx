@@ -25,7 +25,7 @@ const LeadStats = ({ stats }) => {
   ];
 
   return (
-    <div className="bg-gray-50 border border-gray-200 rounded-3xl px-4 py-4">
+    <div className="bg-gray-50 border border-gray-200 mx-4 rounded-3xl px-4 py-4">
       <p className="my-1 text-xs raleway-bold text-[#212121]/70">
         Atividade de Conteúdo
       </p>
