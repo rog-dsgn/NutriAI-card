@@ -15,6 +15,14 @@ export const trackVisit = async (userId) => {
   }
 };
 
-export const getAnalytics = () => {
-  return fetch(`${BASE_URL}/analytics`).then((res) => res.json());
+export const getAnalytics = async () => {
+  try {
+    const res = await fetch(`${BASE_URL}/analytics`, {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+    });
+    return await res.json();
+  } catch (err) {
+    console.error("getAnalytics error:", err);
+  }
 };

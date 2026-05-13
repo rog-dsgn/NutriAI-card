@@ -1,15 +1,18 @@
+// components
 import ProfileCard from "./ProfileCard";
 import LeadStats from "./LeadStats";
+import LinkStats from "./LinkStats";
 
-const DashboardView = () => {
+const DashboardView = ({ stats }) => {
   return (
-    <section className="relative raleway w-full h-screen bg-linear-to-t from-gray-200 to-white text-[#212121]">
+    <section className="raleway w-full h-full overflow-auto pb-20 bg-linear-to-t from-gray-200 to-white text-[#212121]">
       <header className="pt-3 pb-6">
         <ProfileCard />
       </header>
 
-      <div className="px-4">
-        <LeadStats />
+      <div className="flex flex-col gap-2 px-4">
+        <LeadStats stats={stats} />
+        <LinkStats />
       </div>
     </section>
   );

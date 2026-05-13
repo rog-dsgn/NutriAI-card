@@ -1,22 +1,41 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
+import { getAnalytics } from "../../utils/analytics";
 
+// views & components renderizados
 import DashboardView from "../../components/dashboard/DashboardView";
 import LeadsView from "../../components/leads/LeadsView";
 import InsightsView from "../../components/insights/InsightsView";
 import Navbar from "../../components/dashboard/Navbar";
 
-// componente pai que mantem todo os dados aqui antes de importar para as views
 const AdminView = () => {
+  // ações para navbar ** elementos na navbar
   const [activeTab, setActiveTab] = useState("dashboard");
 
   const handleTab = useCallback((tab) => {
     setActiveTab(tab);
   }, []);
 
+  // ações para Dashboard ** elementos na dashboard
+  const [stats, setStats] = useState({
+    visitantes: 0,
+    conversas: 0,
+    cliquesWhatsapp: 0,
+  });
+
+  useEffect(() => {
+    getAnalytics().then((data) => {
+      setStats({
+        visitantes: data.visits ?? 0,
+        conversas: data.chats ?? 0,
+        cliquesWhatsapp: data.leads ?? 0,
+      });
+    });
+  }, []);
+
   return (
-    <main className="relative w-full h-dvh text-[#212121]">
+    <main className="relative w-full h-screen text-[#212121]">
       {/* renderiza as views */}
-      {activeTab === "dashboard" && <DashboardView />}
+      {activeTab === "dashboard" && <DashboardView stats={stats} />}
       {activeTab === "leads" && <LeadsView />}
       {activeTab === "insights" && <InsightsView />}
 

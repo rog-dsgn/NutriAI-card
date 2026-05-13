@@ -2,34 +2,35 @@
 import { Community, MessageCircleDots2 } from "@boxicons/react";
 import Wpp from "/whatsapp.png";
 
-const LeadStats = () => {
-  const stats = [
+const LeadStats = ({ stats }) => {
+  const cards = [
     {
       icon: <Community />,
       name: "Visitantes",
       subtitle: "Pessoas que acessaram seu site",
-      value: 0,
+      value: stats.visitantes,
     },
     {
       icon: <MessageCircleDots2 />,
       name: "Conversas",
       subtitle: "Iniciaram uma conversa com a IA",
-      value: 0,
+      value: stats.conversas,
     },
     {
       icon: { Wpp },
       name: "Cliques no WhatsApp",
       subtitle: "Foram direcionadas para seu contato",
-      value: 0,
+      value: stats.cliquesWhatsapp,
     },
   ];
+
   return (
     <div className="bg-gray-50 border border-gray-200 rounded-3xl px-4 py-4">
       <p className="my-1 text-xs raleway-bold text-[#212121]/70">
         Atividade de Conteúdo
       </p>
       <div className="grid grid-cols-2 gap-2">
-        {stats.map((item, index) => (
+        {cards.map((item, index) => (
           <div
             key={item.name}
             className={`relative overflow-hidden bg-white shadow-xs px-4 py-4 rounded-2xl space-y-2 ${index === 2 ? "col-span-2 py-4 bg-linear-to-tr from-emerald-600 to-emerald-500 text-white" : "col-span-1 text-[#212121]"}`}
