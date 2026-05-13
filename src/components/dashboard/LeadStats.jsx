@@ -33,7 +33,7 @@ const LeadStats = ({ stats }) => {
         {cards.map((item, index) => (
           <div
             key={item.name}
-            className={`relative overflow-hidden bg-white shadow-xs px-4 py-4 rounded-2xl space-y-2 ${index === 2 ? "col-span-2 py-4 bg-linear-to-tr from-emerald-600 to-emerald-500 text-white" : "col-span-1 text-[#212121]"}`}
+            className={`relative overflow-hidden bg-white shadow-xs px-6 py-3 rounded-2xl space-y-2 justify-center ${index === 2 ? "col-span-2 py-4 bg-linear-to-tr from-emerald-600 to-emerald-500 text-white" : "col-span-1 text-[#212121]"}`}
           >
             <p className="text-3xl montserrat">{item.value}</p>
             <p className="text-xs opacity-50">{item.name}</p>
