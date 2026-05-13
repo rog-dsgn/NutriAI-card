@@ -35,7 +35,7 @@ const LeadStats = ({ stats }) => {
             key={item.name}
             className={`relative overflow-hidden bg-white shadow-xs px-4 py-4 rounded-2xl space-y-2 ${index === 2 ? "col-span-2 py-4 bg-linear-to-tr from-emerald-600 to-emerald-500 text-white" : "col-span-1 text-[#212121]"}`}
           >
-            <p className="text-3xl raleway-bold">{item.value}</p>
+            <p className="text-3xl montserrat">{item.value}</p>
             <p className="text-xs opacity-50">{item.name}</p>
             {index === 2 ? (
               <img
