@@ -12,15 +12,15 @@ const LinkStats = () => {
         {links.map((item, index) => (
           <div
             key={index}
-            className="bg-gray-50 border border-gray-200 rounded-3xl px-3 py-3"
+            className="bg-gray-50 border border-gray-200 rounded-3xl p-3"
           >
-            <div className="flex flex-col gap-0.5 justify-around h-30 overflow-hidden">
-              <div className="flex flex-col text-xs">
+            <div className="flex flex-col gap-0.5 justify-around items-center  h-30 overflow-hidden">
+              <div className="flex flex-col gap-1 text-xs text-center">
                 <span className="text-4xl mb-1">{item.icon}</span>
-                <span className="montserrat text-nowrap">{`${item.title}`}</span>
+                <span className="text-xs text-nowrap">{`${item.title}`}</span>
                 {/* <span className="opacity-50">{item.desc}</span> */}
               </div>
-              <div className="flex montserrat text-md gap-1 opacity-90">
+              <div className="flex montserrat text-sm gap-1">
                 <FingerTouch color="#9f9f9f" size="sm" />
                 <span>34 clicks</span>
               </div>
