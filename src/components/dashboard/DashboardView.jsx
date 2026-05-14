@@ -9,6 +9,7 @@ const DashboardView = ({ stats }) => {
     <section className="raleway w-full md:px-8 h-full overflow-y-auto pb-20 text-[#212121]">
       <header className="pt-3 md:pt-6 pb-6">
         <ProfileCard />
+        {/* <h2>Dashboard</h2> */}
       </header>
 
       <span className="flex gap-2 mx-4 text-xs opacity-50 items-center justify-end">
