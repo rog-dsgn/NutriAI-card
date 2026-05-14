@@ -1,7 +1,9 @@
 import React from "react";
 
 const LeadsView = () => {
-  return <div>LeadsView</div>;
+  return <section>
+    
+  </section>;
 };
 
 export default LeadsView;
