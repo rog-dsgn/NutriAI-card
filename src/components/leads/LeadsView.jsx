@@ -23,7 +23,7 @@ const LeadsView = () => {
             {/* tag */}
             <div className="flex items-center gap-2">
               <span
-                className={`inline-flex montserrat items-center gap-1.5 text-xs font-bold px-2.5 py-1 rounded-full capitalize bg-green-50 text-green-600`}
+                className={`inline-flex montserrat items-center gap-1.5 text-xs font-bold px-2.5 py-1 rounded-full capitalize text-green-600`}
               >
                 <span className={`w-1.5 h-1.5 rounded-full bg-green-400`} />
                 Qualificado
