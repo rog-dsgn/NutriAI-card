@@ -5,14 +5,14 @@ import { CursorClick } from "@boxicons/react";
 const LinkStats = () => {
   return (
     <>
-      <p className="px-2 my-1 ml-4 text-xs montserrat text-[#212121]/70">
-        Links
+      <p className="px-2 my-1 mt-4 ml-4 text-xs montserrat text-[#212121]/70">
+        Clicks nos Links
       </p>
       <div className="grid grid-cols-2 gap-1 mx-4">
         {links.map((item, index) => (
           <div
             key={index}
-            className="bg-gray-50 border border-gray-200 rounded-3xl p-3"
+            className="bg-gray-50 border border-gray-200 rounded-3xl p-3 shadow-2xs"
           >
             <div className="flex flex-col gap-0.5 justify-around items-center  h-30 overflow-hidden">
               <div className="flex flex-col gap-1 text-xs text-center">
@@ -20,9 +20,9 @@ const LinkStats = () => {
                 <span className="text-xs text-nowrap">{`${item.title}`}</span>
                 {/* <span className="opacity-50">{item.desc}</span> */}
               </div>
-              <div className="flex montserrat bg-linear-to-br from-gray-200 to-gray-50 rounded-full px-3 py-1 opacity-70 text-xs gap-0.5">
-                <CursorClick color="#9f9f9f" size="xs" />
-                <span>34 clicks</span>
+              <div className="flex montserrat bg-emerald-500 text-white rounded-full px-3 py-1 text-xs gap-0.5">
+                <CursorClick color="#e0e0e0" size="xs" />
+                <span>34</span>
               </div>
             </div>
           </div>

@@ -5,7 +5,7 @@ import { getAnalytics } from "../../utils/analytics";
 import DashboardView from "../../components/dashboard/DashboardView";
 import LeadsView from "../../components/leads/LeadsView";
 import InsightsView from "../../components/insights/InsightsView";
-import Navbar from "../../components/dashboard/Navbar";
+import Navbar from "../../components/Navbar";
 
 const AdminView = () => {
   // ações para navbar ** elementos na navbar

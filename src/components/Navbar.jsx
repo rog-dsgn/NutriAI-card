@@ -19,7 +19,7 @@ const Navbar = ({ tab }) => {
 
   return (
     <nav className="fixed z-50 bottom-4 mx-auto w-screen md:w-xl place-items-center transition-all duration-500 cursor-pointer">
-      <ul className="flex flex-row gap-4 w-fit rounded-full bg-white/30 border border-white/20 shadow-2xl backdrop-blur-3xl p-0.5">
+      <ul className="flex flex-row gap-4 w-fit rounded-full bg-white/30 border border-white/20 shadow-md backdrop-blur-3xl p-0.5">
         {select.map((n) =>
           n.active ? (
             <li
