@@ -33,14 +33,14 @@ const AdminView = () => {
   }, []);
 
   return (
-    <main className="relative w-full h-full bg-linear-to-t from-gray-200 to-white text-[#212121]">
-      {/* navbar ** esse elemento sobrepoe qqr um outro na tela */}
-      <Navbar tab={handleTab} />
-
+    <main className="relative w-screen md:w-xl h-full bg-linear-to-t from-gray-200 to-white text-[#212121]">
       {/* renderiza as views */}
       {activeTab === "dashboard" && <DashboardView stats={stats} />}
       {activeTab === "leads" && <LeadsView />}
       {activeTab === "insights" && <InsightsView />}
+
+      {/* navbar ** esse elemento sobrepoe qqr um outro na tela */}
+      <Navbar tab={handleTab} />
     </main>
   );
 };

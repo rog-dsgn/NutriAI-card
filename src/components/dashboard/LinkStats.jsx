@@ -20,7 +20,7 @@ const LinkStats = () => {
                 <span className="text-xs text-nowrap">{`${item.title}`}</span>
                 {/* <span className="opacity-50">{item.desc}</span> */}
               </div>
-              <div className="flex montserrat opacity-70 text-xs gap-0.5">
+              <div className="flex montserrat bg-linear-to-br from-gray-200 to-gray-50 rounded-full px-3 py-1 opacity-70 text-xs gap-0.5">
                 <CursorClick color="#9f9f9f" size="xs" />
                 <span>34 clicks</span>
               </div>
