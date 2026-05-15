@@ -1,6 +1,7 @@
 import { useState } from "react";
 import DataSel from "./DataSel";
 import InsightsStats from "./InsightsStats";
+import InsightsBars from "./InsightsBars";
 
 const InsightsView = () => {
   const [dataSel, setDataSel] = useState("7d");
@@ -40,10 +41,19 @@ const InsightsView = () => {
 
       <div className="mx-auto">
         <div className="px-2">
-          <p className="ml-4 text-xs montserrat text-[#212121]/70">
-            Resumo de Qualificação
+          <p className="ml-4 my-2 text-xs font-mono text-[#212121]/40">
+            RESUMO DE QUALIFIÇÃO
           </p>
           <InsightsStats />
+        </div>
+      </div>
+
+      <div className="mx-auto mt-8">
+        <div className="px-2">
+          <p className="ml-4 my-2 text-xs font-mono text-[#212121]/40">
+            LEADS POR DIA
+          </p>
+          <InsightsBars />
         </div>
       </div>
     </section>
