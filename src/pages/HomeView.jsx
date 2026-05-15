@@ -3,7 +3,7 @@ import { useEffect } from "react";
 
 // utils & configs
 import getUserId from "../utils/UserId";
-import { trackVisit } from "../utils/analytics";
+import { trackEvent } from "../utils/analytics";
 import { links } from "../config/visitLinks";
 
 // pages
@@ -19,7 +19,7 @@ const SOCIAL_LINKS = links;
 const Home = () => {
   useEffect(() => {
     const userId = getUserId();
-    trackVisit(userId);
+    trackEvent(userId, "visit");
   }, []);
 
   return (

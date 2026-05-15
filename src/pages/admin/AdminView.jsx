@@ -21,6 +21,7 @@ const AdminView = () => {
     conversas: 0,
     cliquesWhatsapp: 0,
   });
+  const [leads, setLeads] = useState([]);
 
   useEffect(() => {
     getAnalytics().then((data) => {
@@ -29,14 +30,16 @@ const AdminView = () => {
         conversas: data.chats ?? 0,
         cliquesWhatsapp: data.leads ?? 0,
       });
+
+      setLeads(data.story || []);
     });
   }, []);
 
   return (
-    <main className="relative w-screen md:w-xl h-full bg-linear-to-t from-gray-200 to-white text-[#212121]">
+    <main className="relative w-screen md:w-xl h-screen bg-linear-to-t from-gray-200 to-white text-[#212121]">
       {/* renderiza as views */}
       {activeTab === "dashboard" && <DashboardView stats={stats} />}
-      {activeTab === "leads" && <LeadsView />}
+      {activeTab === "leads" && <LeadsView leads={leads} />}
       {activeTab === "insights" && <InsightsView />}
 
       {/* navbar ** esse elemento sobrepoe qqr um outro na tela */}

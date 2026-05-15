@@ -3,6 +3,7 @@ import getUserId from "../utils/UserId";
 import { chatConfig } from "../config/chatConfig";
 import { ChevronLeft } from "@boxicons/react";
 import { useNavigate } from "react-router-dom";
+import { trackEvent } from "../utils/analytics";
 
 // ─── Config (mesmas variáveis) ──────────────────────────────
 const CONFIG = chatConfig;
@@ -79,6 +80,7 @@ function MessageBubble({ msg, animate }) {
 
         {msg.showCTA && (
           <a
+            onClick={() => trackEvent(userId, "whatsapp_click")}
             href={WHATSAPP_URL}
             target="_blank"
             rel="noreferrer"

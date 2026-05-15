@@ -13,7 +13,7 @@ const DashboardView = ({ stats }) => {
       </header>
 
       <span className="flex gap-2 mx-4 text-xs opacity-50 items-center justify-end">
-        Última atualização: Agora
+        Última atualização:
       </span>
 
       <div className="flex flex-col gap-2">
