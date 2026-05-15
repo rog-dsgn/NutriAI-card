@@ -38,11 +38,13 @@ const InsightsView = () => {
         </div>
       </header>
 
-      <div className="py-1 px-1 bg-gray-50 mx-2 shadow rounded-xl">
-        <p className="px-2 my-1 ml-4 text-xs montserrat text-[#212121]/70">
-          Resumo de Qualificação
-        </p>
-        <InsightsStats />
+      <div className="mx-auto">
+        <div className="px-2">
+          <p className="ml-4 text-xs montserrat text-[#212121]/70">
+            Resumo de Qualificação
+          </p>
+          <InsightsStats />
+        </div>
       </div>
     </section>
   );
