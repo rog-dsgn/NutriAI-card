@@ -3,7 +3,7 @@ const FrequentTopics = ({ topics = [] }) => {
   //   const max = sorted[0]?.count || 1;
 
   return (
-    <div className="p-4">
+    <div className="p-4 mb-20">
       <p className="text-xs text-gray-400 uppercase tracking-wide mb-4">
         Temas frequentes
       </p>
