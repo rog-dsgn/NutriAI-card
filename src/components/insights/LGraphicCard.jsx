@@ -48,7 +48,7 @@ const LGraphicCard = ({ total = 0, weeklyGrowth = 0, chartData = [] }) => {
   };
 
   return (
-    <div className="bg-white rounded-2xl border border-gray-100 p-4">
+    <div className="bg-transparent mx-4 mb-4 rounded-2xl border border-gray-100 p-4">
       <div className="flex justify-between items-start mb-4">
         <div>
           <p className="text-xs text-gray-400 mb-1">Total de leads</p>
