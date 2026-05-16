@@ -1,7 +1,12 @@
 import "../../utils/chartConfig";
 import { Line } from "react-chartjs-2";
 
-const LGraphicCard = ({ total = 0, weeklyGrowth = 0, chartData = [] }) => {
+const LGraphicCard = ({
+  title,
+  total = 0,
+  weeklyGrowth = 0,
+  chartData = [],
+}) => {
   const labels = ["seg", "ter", "qua", "qui", "sex", "sáb", "dom"];
 
   const data = {
@@ -51,8 +56,8 @@ const LGraphicCard = ({ total = 0, weeklyGrowth = 0, chartData = [] }) => {
     <div className="bg-transparent mb-4 px-4">
       <div className="flex justify-between items-start mb-4">
         <div>
-          <p className="text-xs text-emerald-500 mb-1">Total de leads</p>
-          <p className="text-3xl font-medium text-gray-900">{total}</p>
+          <p className="text-xs text-emerald-500 mb-1">{title}</p>
+          <p className="text-3xl font-medium text-[#212121]">{total}</p>
         </div>
         {weeklyGrowth > 0 && (
           <span className="text-xs bg-green-50 text-green-700 px-3 py-1 rounded-full">

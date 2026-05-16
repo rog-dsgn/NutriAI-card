@@ -3,6 +3,9 @@ import DataSel from "./DataSel";
 import InsightsStats from "./InsightsStats";
 import InsightsBars from "./InsightsBars";
 import LGraphicCard from "./LGraphicCard";
+import LeadsByDay from "./LeadsByDay";
+import PeakHours from "./PeakHours";
+import FrequentTopics from "./FrequentTopics";
 
 const InsightsView = () => {
   const [dataSel, setDataSel] = useState("7d");
@@ -43,21 +46,35 @@ const InsightsView = () => {
       <div className="mx-auto">
         <div className="px-2">
           <p className="ml-4 my-2 text-xs text-[#212121]/40">
-            RESUMO DE QUALIFIÇÃO
+            Resumo de qualificação
           </p>
+          {/* total de leads */}
           <LGraphicCard
+            title={"Total de leads"}
             total={12}
             weeklyGrowth={3}
             chartData={[1, 3, 1, 4, 2, 5, 2]}
           />
-          <InsightsStats />
-        </div>
-      </div>
 
-      <div className="mx-auto mt-8">
-        <div className="px-2">
-          <p className="ml-4 my-2 text-xs text-[#212121]/40">LEADS POR DIA</p>
-          <InsightsBars />
+          {/* taxa de qualificação */}
+          <LGraphicCard
+            title={"Taxa de qualificação"}
+            total={"67%"}
+            weeklyGrowth={3}
+            chartData={[1, 3, 1, 4, 2, 5, 2]}
+          />
+
+          <LeadsByDay dailyData={[1, 3, 1, 4, 2, 5, 2]} />
+
+          <PeakHours data={{ morning: 8, afternoon: 12, evening: 5 }} />
+
+          <FrequentTopics
+            topics={[
+              { label: "Emagrecimento", count: 8 },
+              { label: "Consulta online", count: 5 },
+              { label: "Plano mensal", count: 4 },
+            ]}
+          />
         </div>
       </div>
     </section>
