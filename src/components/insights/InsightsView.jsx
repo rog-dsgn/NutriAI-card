@@ -10,7 +10,6 @@ import DataSel from "./DataSel";
 import LeadsByDay from "./LeadsByDay";
 import PeakHours from "./PeakHours";
 import LGraphicCard from "./LGraphicCard";
-import InsightsStats from "./InsightsStats";
 import FrequentTopics from "./FrequentTopics";
 
 const BASE_URL = import.meta.env.VITE_N8N_HOOK;
