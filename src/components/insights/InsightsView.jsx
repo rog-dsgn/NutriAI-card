@@ -2,6 +2,7 @@ import { useState } from "react";
 import DataSel from "./DataSel";
 import InsightsStats from "./InsightsStats";
 import InsightsBars from "./InsightsBars";
+import LGraphicCard from "./LGraphicCard";
 
 const InsightsView = () => {
   const [dataSel, setDataSel] = useState("7d");
@@ -41,18 +42,21 @@ const InsightsView = () => {
 
       <div className="mx-auto">
         <div className="px-2">
-          <p className="ml-4 my-2 text-xs font-mono text-[#212121]/40">
+          <p className="ml-4 my-2 text-xs text-[#212121]/40">
             RESUMO DE QUALIFIÇÃO
           </p>
+          <LGraphicCard
+            total={12}
+            weeklyGrowth={3}
+            chartData={[1, 3, 1, 4, 2, 5, 2]}
+          />
           <InsightsStats />
         </div>
       </div>
 
       <div className="mx-auto mt-8">
         <div className="px-2">
-          <p className="ml-4 my-2 text-xs font-mono text-[#212121]/40">
-            LEADS POR DIA
-          </p>
+          <p className="ml-4 my-2 text-xs text-[#212121]/40">LEADS POR DIA</p>
           <InsightsBars />
         </div>
       </div>
