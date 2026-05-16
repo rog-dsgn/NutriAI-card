@@ -6,9 +6,8 @@ const LGraphicCard = ({
   total = 0,
   weeklyGrowth = 0,
   chartData = [],
+  labels = [],
 }) => {
-  const labels = ["seg", "ter", "qua", "qui", "sex", "sáb", "dom"];
-
   const data = {
     labels,
     datasets: [

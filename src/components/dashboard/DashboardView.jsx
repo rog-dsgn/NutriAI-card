@@ -6,7 +6,7 @@ import { CaretDown } from "@boxicons/react";
 
 const DashboardView = ({ stats }) => {
   return (
-    <section className="raleway w-full md:px-8 px-2 h-full overflow-y-auto pb-20 text-[#212121]">
+    <section className="raleway w-full md:px-8 px-2 h-full overflow-y-auto text-[#212121]">
       <header className="pt-3 md:pt-6 pb-6">
         <ProfileCard />
         {/* <h2>Dashboard</h2> */}

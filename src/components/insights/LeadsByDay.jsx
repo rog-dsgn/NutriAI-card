@@ -1,14 +1,10 @@
 import { Bar } from "react-chartjs-2";
 
-const LeadsByDay = ({ dailyData = [] }) => {
-  const labels = ["seg", "ter", "qua", "qui", "sex", "sáb", "dom"];
-
+const LeadsByDay = ({ dailyData = [], labels = [] }) => {
   if (!dailyData.length) {
     return (
       <div className="p-4">
-        <p className="text-xs text-gray-400 uppercase tracking-wide mb-4">
-          Leads por dia
-        </p>
+        <p className="my-2 text-xs text-[#212121]/40">Leads por dia</p>
         <p className="text-sm text-gray-400 text-center py-4">
           Nenhum dado disponível ainda
         </p>
@@ -59,9 +55,7 @@ const LeadsByDay = ({ dailyData = [] }) => {
   return (
     <div className="p-4">
       <div className="flex justify-between items-center mb-4">
-        <p className="text-xs text-gray-400 uppercase tracking-wide">
-          Leads por dia
-        </p>
+        <p className="my-2 text-xs text-[#212121]/40">Leads por dia</p>
         {peakIndex >= 0 && (
           <span className="text-xs text-gray-400">
             pico: {labels[peakIndex]}

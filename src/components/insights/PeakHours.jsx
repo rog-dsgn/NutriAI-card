@@ -20,9 +20,7 @@ const PeakHours = ({ data = { morning: 0, afternoon: 0, evening: 0 } }) => {
   return (
     <div className="p-4">
       <div className="flex justify-between items-center mb-4">
-        <p className="text-xs text-gray-400 uppercase tracking-wide">
-          Horários de pico
-        </p>
+        <p className="my-2 text-xs text-[#212121]/40">Horários de pico</p>
         {peak && (
           <span className="text-xs text-gray-400">
             pico: {peak.label.toLowerCase()}

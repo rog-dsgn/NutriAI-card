@@ -1,8 +1,5 @@
-import { useState, useEffect, useCallback } from "react";
-import { getAnalytics } from "../utils/analytics";
-import { getDateRange } from "../utils/dateRange";
-
-const BASE_URL = import.meta.env.VITE_N8N_HOOK;
+import { useState, useEffect } from "react";
+import { fetchMetrics, getAnalytics } from "../utils/analytics";
 
 const EMPTY_METRICS = {
   totalLeads: 0,
@@ -10,6 +7,7 @@ const EMPTY_METRICS = {
   qualificados: 0,
   naoQualificados: 0,
   leadsPorDia: [],
+  leadsPorDiaLabels: [],
   horariosPico: { morning: 0, afternoon: 0, evening: 0 },
   temasFrecuentes: [],
   crescimentoSemana: 0,
@@ -43,33 +41,25 @@ const useAdminData = (activeTab) => {
   }, []);
 
   // fetch insights — só quando a aba estiver ativa
-  const fetchMetrics = useCallback(async (selectedFilter) => {
-    setInsightsLoading(true);
-    setInsightsError(null);
-
-    const { start, end } = getDateRange(selectedFilter);
-
-    try {
-      const res = await fetch(`${BASE_URL}/insights?start=${start}&end=${end}`);
-      if (!res.ok) throw new Error("Erro ao buscar métricas");
-
-      const text = await res.text();
-      if (!text || !text.trim()) throw new Error("Resposta vazia");
-
-      const data = JSON.parse(text);
-      setMetrics(data);
-    } catch (err) {
-      console.error("fetchMetrics:", err);
-      setInsightsError("Não foi possível carregar os dados.");
-    } finally {
-      setInsightsLoading(false);
-    }
-  }, []);
-
   useEffect(() => {
     if (activeTab !== "insights") return;
-    fetchMetrics(filter);
-  }, [activeTab, filter, fetchMetrics]);
+
+    const load = async () => {
+      setInsightsLoading(true);
+      try {
+        const item = await fetchMetrics(filter);
+        setMetrics(item);
+        setInsightsError(null);
+      } catch (err) {
+        console.error("Error fetching metrics:", err);
+        setInsightsError("Erro ao carregar insights");
+      } finally {
+        setInsightsLoading(false);
+      }
+    };
+
+    load();
+  }, [activeTab, filter]);
 
   return {
     stats,

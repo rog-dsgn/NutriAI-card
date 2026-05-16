@@ -4,9 +4,7 @@ const FrequentTopics = ({ topics = [] }) => {
 
   return (
     <div className="p-4 mb-20">
-      <p className="text-xs text-gray-400 uppercase tracking-wide mb-4">
-        Temas frequentes
-      </p>
+      <p className="my-2 text-xs text-[#212121]/40 mb-4">Temas frequentes</p>
       {sorted.length === 0 ? (
         <p className="text-sm text-gray-400 text-center py-4">
           Nenhum tema registrado ainda

@@ -1,6 +1,4 @@
 import DataSel from "./DataSel";
-
-// import components
 import LeadsByDay from "./LeadsByDay";
 import PeakHours from "./PeakHours";
 import LGraphicCard from "./LGraphicCard";
@@ -45,6 +43,7 @@ const InsightsView = ({ metrics, filter, onFilterChange, loading, error }) => {
               total={metrics.totalLeads}
               weeklyGrowth={metrics.crescimentoSemana}
               chartData={metrics.leadsPorDia}
+              labels={metrics.leadsPorDiaLabels}
             />
 
             <LGraphicCard
@@ -52,9 +51,13 @@ const InsightsView = ({ metrics, filter, onFilterChange, loading, error }) => {
               total={`${metrics.taxaQualificacao}%`}
               weeklyGrowth={0}
               chartData={metrics.leadsPorDia}
+              labels={metrics.leadsPorDiaLabels}
             />
 
-            <LeadsByDay dailyData={metrics.leadsPorDia} />
+            <LeadsByDay
+              dailyData={metrics.leadsPorDia}
+              labels={metrics.leadsPorDiaLabels ?? []}
+            />
 
             <PeakHours data={metrics.horariosPico} />
 
