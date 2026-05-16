@@ -48,10 +48,10 @@ const LGraphicCard = ({ total = 0, weeklyGrowth = 0, chartData = [] }) => {
   };
 
   return (
-    <div className="bg-transparent mb-4">
+    <div className="bg-transparent mb-4 px-4">
       <div className="flex justify-between items-start mb-4">
         <div>
-          <p className="text-xs text-gray-400 mb-1">Total de leads</p>
+          <p className="text-xs text-emerald-500 mb-1">Total de leads</p>
           <p className="text-3xl font-medium text-gray-900">{total}</p>
         </div>
         {weeklyGrowth > 0 && (
