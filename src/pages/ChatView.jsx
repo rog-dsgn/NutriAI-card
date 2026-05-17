@@ -5,7 +5,7 @@ import { ChevronLeft } from "@boxicons/react";
 import { useNavigate } from "react-router-dom";
 import { trackEvent } from "../utils/analytics";
 
-// ─── Config (mesmas variáveis) ──────────────────────────────
+// ─── Config ─────────────────────────────────────────────────
 const CONFIG = chatConfig;
 
 const userId = getUserId();
@@ -17,6 +17,14 @@ const INITIAL_MESSAGE = {
   role: "assistant",
   content: `Olá! 👋 Sou a assistente virtual da ${CONFIG.name}.\n\nVou simular como seria o seu plano alimentar personalizado em menos de 2 minutos.\n\nPara começar: **qual é o seu principal objetivo?**`,
   showCTA: false,
+};
+
+const STAGE_PROGRESS = {
+  1: 0,
+  2: 20,
+  3: 40,
+  4: 80,
+  5: 100,
 };
 
 // ─── Helpers ────────────────────────────────────────────────
@@ -50,7 +58,7 @@ function TypingIndicator() {
 }
 
 // ─── MessageBubble ──────────────────────────────────────────
-function MessageBubble({ msg, animate }) {
+function MessageBubble({ msg, animate, onWhatsappClick }) {
   const isUser = msg.role === "user";
 
   return (
@@ -58,7 +66,6 @@ function MessageBubble({ msg, animate }) {
       className={`flex items-end gap-2.5 ${isUser ? "flex-row-reverse" : "flex-row"} 
         ${animate ? "animate-fade-in" : ""}`}
     >
-      {/* avatar apenas do assistente */}
       {!isUser && (
         <div className="w-7 h-7 rounded-full bg-emerald-300 flex items-center justify-center text-sm shrink-0 mb-1">
           🥗
@@ -80,7 +87,7 @@ function MessageBubble({ msg, animate }) {
 
         {msg.showCTA && (
           <a
-            onClick={() => trackEvent(userId, "whatsapp_click")}
+            onClick={onWhatsappClick}
             href={WHATSAPP_URL}
             target="_blank"
             rel="noreferrer"
@@ -98,19 +105,19 @@ function MessageBubble({ msg, animate }) {
   );
 }
 
-// ─── Componente principal (página completa) ─────────────────
+// ─── Componente principal ────────────────────────────────────
 export default function AIChatPage() {
   const [messages, setMessages] = useState([INITIAL_MESSAGE]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const [newIdx, setNewIdx] = useState(null);
+  const [stage, setStage] = useState(1);
+  const [pendingLead, setPendingLead] = useState(null);
   const bottomRef = useRef(null);
   const inputRef = useRef(null);
   const navigate = useNavigate();
 
-  const backArrow = () => {
-    navigate("/");
-  };
+  const backArrow = () => navigate("/");
 
   useEffect(() => {
     if (!loading) inputRef.current?.focus();
@@ -120,8 +127,30 @@ export default function AIChatPage() {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
+  // dispara quando o usuário clica no botão do WhatsApp
+  const handleWhatsappClick = async () => {
+    trackEvent(userId, "whatsapp_click");
+
+    if (pendingLead) {
+      try {
+        await fetch(`${CONFIG.n8nWebhookUrl}/save-lead`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(pendingLead, userId),
+        });
+      } catch (err) {
+        console.error("save-lead error:", err);
+      }
+    }
+  };
+
   const send = async () => {
     if (!input.trim() || loading) return;
+
+    // registra chat_start apenas na primeira mensagem do usuário
+    if (messages.length === 1) {
+      trackEvent(userId, "chat_start");
+    }
 
     const userMsg = { role: "user", content: input.trim() };
     setMessages((prev) => [...prev, userMsg]);
@@ -145,6 +174,16 @@ export default function AIChatPage() {
         data.text ||
         "Desculpe, tive um problema ao processar sua resposta.";
 
+      // atualiza estágio
+      if (data.stage && STAGE_PROGRESS[data.stage] !== undefined) {
+        setStage(data.stage);
+      }
+
+      // guarda lead pendente para salvar quando clicar no WhatsApp
+      if (data.pendingLead) {
+        setPendingLead(data.pendingLead);
+      }
+
       setMessages((prev) => [
         ...prev,
         { role: "assistant", content, showCTA: data.showCTA === true },
@@ -165,7 +204,7 @@ export default function AIChatPage() {
     }
   };
 
-  const progress = Math.min(((messages.length - 1) / 8) * 100, 100);
+  const progress = STAGE_PROGRESS[stage] ?? 0;
 
   return (
     <>
@@ -181,8 +220,6 @@ export default function AIChatPage() {
         {/* ── Header ── */}
         <header className="shrink-0 bg-white border-b border-stone-100 shadow-sm">
           <div className="flex items-center gap-3 px-4 py-3">
-            {/* avatar */}
-            {/* badge */}
             <span
               className="text-gray-600 px-1 cursor-pointer"
               onClick={backArrow}
@@ -195,8 +232,6 @@ export default function AIChatPage() {
               </div>
               <span className="absolute bottom-0 right-0 w-3 h-3 bg-emerald-400 rounded-full border-2 border-white" />
             </div>
-
-            {/* info */}
             <div className="flex-1 min-w-0">
               <p className="font-semibold text-stone-800 text-sm leading-none">
                 {CONFIG.agentName}
@@ -207,22 +242,27 @@ export default function AIChatPage() {
             </div>
           </div>
 
-          {/* barra de progresso */}
+          {/* barra de progresso por estágio */}
           <div className="h-0.5 bg-stone-100 mx-4 mb-2 rounded-full overflow-hidden">
             <div
-              className="h-full bg-linear-to-r from-emerald-400 to-green-500 rounded-full transition-all duration-500"
+              className="h-full bg-linear-to-r from-emerald-400 to-green-500 rounded-full transition-all duration-700"
               style={{ width: `${progress}%` }}
             />
           </div>
           <p className="text-[10px] text-stone-400 text-center pb-2 tracking-wide">
-            Simulação do plano alimentar · {Math.round(progress)}% concluído
+            Simulação do plano alimentar · {progress}% concluído
           </p>
         </header>
 
         {/* ── Messages ── */}
         <div className="flex-1 overflow-y-auto px-4 py-5 space-y-4 bg-emerald-100">
           {messages.map((msg, i) => (
-            <MessageBubble key={i} msg={msg} animate={i === newIdx} />
+            <MessageBubble
+              key={i}
+              msg={msg}
+              animate={i === newIdx}
+              onWhatsappClick={handleWhatsappClick}
+            />
           ))}
           {loading && <TypingIndicator />}
           <div ref={bottomRef} />
