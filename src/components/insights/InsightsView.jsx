@@ -57,6 +57,7 @@ const InsightsView = ({ metrics, filter, onFilterChange, loading, error }) => {
             <LeadsByDay
               dailyData={metrics.leadsPorDia}
               labels={metrics.leadsPorDiaLabels ?? []}
+              filter={filter}
             />
 
             <PeakHours data={metrics.horariosPico} />

@@ -1,10 +1,18 @@
 import { Bar } from "react-chartjs-2";
 
-const LeadsByDay = ({ dailyData = [], labels = [] }) => {
+const LABEL_MAP = {
+  "7d": "Leads por dia",
+  "30d": "Leads por semana",
+  "3m": "Leads por mês",
+};
+
+const LeadsByDay = ({ dailyData = [], labels = [], filter = "7d" }) => {
+  const sectionLabel = LABEL_MAP[filter] ?? "Leads por dia";
+
   if (!dailyData.length) {
     return (
       <div className="p-4">
-        <p className="my-2 text-xs text-[#212121]/40">Leads por dia</p>
+        <p className="my-2 text-xs text-[#212121]/40">{sectionLabel}</p>
         <p className="text-sm text-gray-400 text-center py-4">
           Nenhum dado disponível ainda
         </p>
@@ -55,7 +63,7 @@ const LeadsByDay = ({ dailyData = [], labels = [] }) => {
   return (
     <div className="p-4">
       <div className="flex justify-between items-center mb-4">
-        <p className="my-2 text-xs text-[#212121]/40">Leads por dia</p>
+        <p className="my-2 text-xs text-[#212121]/40">{sectionLabel}</p>
         {peakIndex >= 0 && (
           <span className="text-xs text-gray-400">
             pico: {labels[peakIndex]}
