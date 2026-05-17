@@ -5,9 +5,7 @@ import { CursorClick } from "@boxicons/react";
 const LinkStats = () => {
   return (
     <>
-      <p className="px-2 my-1 mt-4 ml-4 text-xs montserrat text-[#212121]/70">
-        Clicks nos Links
-      </p>
+      <p className="ml-4 my-2 text-xs text-[#212121]/40">Clicks nos Links</p>
       <div className="grid grid-cols-2 gap-1 mx-4 mb-20">
         {links.map((item, index) => (
           <div

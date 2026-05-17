@@ -1,6 +1,10 @@
 const ProfileCard = () => {
   return (
-    <article className="flex flex-row gap-3 w-fit px-6 py-3">
+    <article className="flex flex-row gap-3 w-full">
+      <div className="flex flex-col flex-1">
+        <span className="text-xs opacity-70">Dashboard</span>
+        <span className="montserrat opacity-90">Studio Content AI</span>
+      </div>
       <figure>
         <img
           src="/avatar.png"
@@ -8,10 +12,6 @@ const ProfileCard = () => {
           className="w-10 aspect-square rounded-full"
         />
       </figure>
-      <div className="flex flex-col">
-        <span className="text-lg font-medium">Marina Souza</span>
-        <span className="text-xs text-black/30">AI content Studio</span>
-      </div>
     </article>
   );
 };

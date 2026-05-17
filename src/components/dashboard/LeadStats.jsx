@@ -26,10 +26,10 @@ const LeadStats = ({ stats }) => {
 
   return (
     <>
-      <p className="px-2 my-1 ml-4 text-xs montserrat text-[#212121]/70">
+      <p className="ml-4 my-2 text-xs text-[#212121]/40">
         Atividade de Conteúdo
       </p>
-      <div className="grid grid-cols-2 gap-2 mx-4">
+      <div className="grid grid-cols-2 gap-2 mb-4 mx-4">
         {cards.map((item, index) => (
           <div
             key={item.name}

@@ -6,15 +6,10 @@ import { CaretDown } from "@boxicons/react";
 
 const DashboardView = ({ stats }) => {
   return (
-    <section className="raleway w-full md:px-8 px-2 h-full overflow-y-auto text-[#212121]">
-      <header className="pt-3 md:pt-6 pb-6">
+    <section className="h-dvh pt-4 overflow-y-auto">
+      <header className="grid grid-cols-1 p-8 mb-4 gap-4">
         <ProfileCard />
-        {/* <h2>Dashboard</h2> */}
       </header>
-
-      <span className="flex gap-2 mx-4 text-xs opacity-50 items-center justify-end">
-        Última atualização:
-      </span>
 
       <div className="flex flex-col gap-2">
         <LeadStats stats={stats} />
