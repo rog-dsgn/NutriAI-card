@@ -19,7 +19,7 @@ const LinkStats = () => {
               </div>
               <div className="flex montserrat bg-emerald-500 text-white rounded-full px-3 py-1 text-xs gap-0.5">
                 <CursorClick color="#e0e0e0" size="xs" />
-                <span>34</span>
+                <span>{item.counter}</span>
               </div>
             </div>
           </div>
