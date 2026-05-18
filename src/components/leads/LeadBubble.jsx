@@ -18,7 +18,7 @@ const LeadBubble = ({ leads, isLast, isSelected, onClick }) => {
           ${
             isSelected
               ? "bg-emerald-500 border-emerald-500"
-              : "bg-white ring-2 border-none ring-emerald-100 -scale-60"
+              : "bg-emerald-100 ring-2 border-emerald-100 ring-emerald-100 -scale-60"
           }`}
       />
 

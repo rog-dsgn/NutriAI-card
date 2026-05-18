@@ -26,7 +26,9 @@ const AdminView = () => {
 
   return (
     <main className="relative w-screen md:w-xl h-screen bg-linear-to-t from-gray-200 to-white text-[#212121]">
-      {activeTab === "dashboard" && <DashboardView stats={stats} />}
+      {activeTab === "dashboard" && (
+        <DashboardView leads={leads} stats={stats} />
+      )}
       {activeTab === "leads" && <LeadsView leads={leads} />}
       {activeTab === "insights" && (
         <InsightsView

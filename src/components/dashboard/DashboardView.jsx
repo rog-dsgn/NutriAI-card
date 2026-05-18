@@ -1,10 +1,9 @@
-// components
 import ProfileCard from "./ProfileCard";
 import LeadStats from "./LeadStats";
 import LinkStats from "./LinkStats";
-import { CaretDown } from "@boxicons/react";
+import LastLead from "./LastLead";
 
-const DashboardView = ({ stats }) => {
+const DashboardView = ({ stats, leads = [] }) => {
   return (
     <section className="h-dvh pt-4 overflow-y-auto">
       <header className="grid grid-cols-1 p-8 mb-4 gap-4">
@@ -13,6 +12,7 @@ const DashboardView = ({ stats }) => {
 
       <div className="flex flex-col gap-2">
         <LeadStats stats={stats} />
+        <LastLead leads={leads} />
         <LinkStats />
       </div>
     </section>
